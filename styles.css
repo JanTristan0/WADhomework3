@@ -373,3 +373,82 @@ textarea {
   background: #fee2e2;
   color: #991b1b;
 }
+
+
+
+
+/* HOMEWORK 3: Vue rakenduse peamine konteiner */
+#app {
+  flex: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Peidab Vue sisu kuni rakendus on käivitunud */
+[v-cloak] {
+  display: none;
+}
+
+/* Näitab, milline Vue vaade on aktiivne */
+.main-nav a.router-link-exact-active {
+  background: #6b7280;
+  color: #ffffff;
+}
+
+/* Like nupp ja like'ide arv samal real */
+.post-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* Like'ide arvu välimus */
+.like-count {
+  color: #4b5563;
+  font-size: 0.9rem;
+}
+
+/* Reset likes nupp */
+.reset-button {
+  align-self: center;
+  margin: 0.5rem auto 1rem;
+}
+
+/* Signup vorm */
+.signup-card {
+  max-width: 430px;
+}
+
+/* Paroolitingimuste veateated */
+.password-errors {
+  margin-top: 1rem;
+  padding: 0.8rem;
+  border-radius: 8px;
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 0.9rem;
+}
+
+.password-errors p {
+  margin: 0 0 0.5rem;
+  font-weight: bold;
+}
+
+.password-errors ul {
+  margin: 0;
+  padding-left: 1.3rem;
+}
+
+.password-errors li {
+  margin-bottom: 0.3rem;
+}
+
+/* Kui parool on korrektne */
+.signup-success {
+  margin-top: 1rem;
+  color: #166534;
+  text-align: center;
+  font-weight: bold;
+}
