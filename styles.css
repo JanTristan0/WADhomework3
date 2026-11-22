@@ -377,7 +377,9 @@ textarea {
 
 
 
-/* HOMEWORK 3: Vue rakenduse peamine konteiner */
+/* HOMEWORK 3 css*/
+
+/*Vue application container, valib elemendi, mille id on app*/
 #app {
   flex: 1;
   min-height: 100vh;
@@ -385,18 +387,18 @@ textarea {
   flex-direction: column;
 }
 
-/* Peidab Vue sisu kuni rakendus on käivitunud */
+/*veebileht on peidetud, kuni Vue käivitub, atribuudi selector*/
 [v-cloak] {
   display: none;
 }
 
-/* Näitab, milline Vue vaade on aktiivne */
+/*aktiivne navigatsiooni link on esiletõstetud*/
 .main-nav a.router-link-exact-active {
   background: #6b7280;
   color: #ffffff;
 }
 
-/* Like nupp ja like'ide arv samal real */
+/*paneb like-nupu ja like'ide arvu samale reale*/
 .post-actions {
   display: flex;
   justify-content: space-between;
@@ -404,7 +406,7 @@ textarea {
   gap: 0.75rem;
 }
 
-/* Like'ide arvu välimus */
+/*like'ide arvu kujundus*/
 .like-count {
   color: #4b5563;
   font-size: 0.9rem;
