@@ -412,18 +412,18 @@ textarea {
   font-size: 0.9rem;
 }
 
-/* Reset likes nupp */
+/*like'ide arvu reset nupp*/
 .reset-button {
   align-self: center;
   margin: 0.5rem auto 1rem;
 }
 
-/* Signup vorm */
+/*Signup formi maksimaalne laius*/
 .signup-card {
   max-width: 430px;
 }
 
-/* Paroolitingimuste veateated */
+/*parooli valimise veateadete kujundus*/ 
 .password-errors {
   margin-top: 1rem;
   padding: 0.8rem;
@@ -433,21 +433,24 @@ textarea {
   font-size: 0.9rem;
 }
 
+/*paragrahvi elemendi kujundus*/
 .password-errors p {
   margin: 0 0 0.5rem;
   font-weight: bold;
 }
 
+/*parooli errori listi kujundus*/
 .password-errors ul {
   margin: 0;
   padding-left: 1.3rem;
 }
 
+/*parooli errori kujundus*/
 .password-errors li {
   margin-bottom: 0.3rem;
 }
 
-/* Kui parool on korrektne */
+/*sobiva parooli teate kujundus*/
 .signup-success {
   margin-top: 1rem;
   color: #166534;
