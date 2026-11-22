@@ -56,7 +56,7 @@ const Header = {
 const Footer = {
   template: `
     <footer class="site-footer">
-      <p>© 2026 PostIt - WAD Homework 3</p>
+      <p>WAD Homework 3</p>
     </footer>`
 };
 
