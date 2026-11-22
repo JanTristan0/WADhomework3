@@ -67,8 +67,8 @@ const Post = { //ühe postituse kuvamine
     post() {
       return this.$store.state.posts.find(p => p.id === this.id);
     }
-  },
-  template: ` //kuvab postituse andmed ja like nupu
+  }, // all kuvab postituse andmed ja like nupu (ei saanud //-iga commentiks panna seal)
+  template: `
     <article v-if="post" class="post">
       <header>
         <img class="mini-avatar" src="images/avatar.jpg" alt="Avatar">
@@ -96,8 +96,8 @@ const Home = { //avaleht kus kuvatakse kõik postitused
   },
   mounted() {
     this.$store.dispatch("load"); //lehe avamisel laeb postitused
-  },
-  template: ` //kuvab postitused ja reset nupu
+  }, // all kuvab postitused ja reset nupu (ei saanud //-iga all commentiks panna)
+  template: ` 
     <main class="page-shell">
       <section class="feed-layout">
         <aside class="side-panel"><p>PostIt</p></aside>
