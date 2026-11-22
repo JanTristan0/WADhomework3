@@ -1,35 +1,35 @@
 "use strict";
 
 // Vuex hoiab postitusi ja like'ide arvu
-const store = Vuex.createStore({
-  state: () => ({ posts: [], error: "" }),
+const store = Vuex.createStore({ //vuex hoiab postitusi likeseid ja veateateid
+  state: () => ({ posts: [], error: "" }), //alguses on postituste nimekiri tühi
 
   mutations: {
     setPosts(state, posts) {
-      state.posts = posts.map(p => ({ ...p, likes: 0 }));
+      state.posts = posts.map(p => ({ ...p, likes: 0 })); //salvestab ja määrab likede arvuks 0
     },
     like(state, id) {
-      const post = state.posts.find(p => p.id === id);
+      const post = state.posts.find(p => p.id === id); //lisab valitud postitusele ühe like
       if (post) post.likes++;
     },
-    reset(state) {
+    reset(state) { //nullib postituse liked
       state.posts.forEach(p => p.likes = 0);
     },
-    setError(state, message) {
+    setError(state, message) { //salvestab veateate
       state.error = message;
     }
   },
 
-  actions: {
-    async load({ state, commit }) {
+  actions: { //laeb postitused json failist
+    async load({ state, commit }) { //kui postitused on juba olemas, ei lae uuesti
       if (state.posts.length) return;
       try {
         const response = await fetch("./posts.json");
         if (!response.ok) throw new Error("Cannot load JSON");
         const posts = await response.json();
-        if (!Array.isArray(posts) || posts.length < 10)
+        if (!Array.isArray(posts) || posts.length < 10) //kontrollib et oleks vähemalt 10 postitust
           throw new Error("At least 10 posts required");
-        commit("setPosts", posts);
+        commit("setPosts", posts); //kui laadimine ebaõnnestub, näitab veateadet
       } catch (error) {
         console.error(error);
         commit("setError", "Posts could not be loaded.");
@@ -38,7 +38,7 @@ const store = Vuex.createStore({
   }
 });
 
-// Header component
+// Header component //lehe ülemine menüü
 const Header = {
   template: `
     <header class="site-header">
@@ -61,14 +61,14 @@ const Footer = {
 };
 
 // Post component: võtab andmed Vuex store'ist
-const Post = {
-  props: ["id"],
-  computed: {
+const Post = { //ühe postituse kuvamine
+  props: ["id"], 
+  computed: { //otsib postituse ID järgi vuex storest
     post() {
       return this.$store.state.posts.find(p => p.id === this.id);
     }
   },
-  template: `
+  template: ` //kuvab postituse andmed ja like nupu
     <article v-if="post" class="post">
       <header>
         <img class="mini-avatar" src="images/avatar.jpg" alt="Avatar">
@@ -88,16 +88,16 @@ const Post = {
 };
 
 // Home page
-const Home = {
+const Home = { //avaleht kus kuvatakse kõik postitused
   components: { PostCard: Post },
   computed: {
     posts() { return this.$store.state.posts; },
-    error() { return this.$store.state.error; }
+    error() { return this.$store.state.error; } //võtab postitused ja veateate vuex storest
   },
   mounted() {
-    this.$store.dispatch("load");
+    this.$store.dispatch("load"); //lehe avamisel laeb postitused
   },
-  template: `
+  template: ` //kuvab postitused ja reset nupu
     <main class="page-shell">
       <section class="feed-layout">
         <aside class="side-panel"><p>PostIt</p></aside>
@@ -115,11 +115,11 @@ const Home = {
 
 // Signup page ja parooli valideerimine
 const Signup = {
-  data: () => ({ email: "", password: "", tried: false, success: false }),
+  data: () => ({ email: "", password: "", tried: false, success: false }), //hoiab kasutaja sisestatud andmeid
 
   computed: {
     errors() {
-      const p = this.password;
+      const p = this.password; //kontrollib parooli pikkust, suuri ja väikseid tähti, numbreid ja esimest tähte
       const errors = [];
       if (p.length < 8 || p.length >= 15) errors.push("8-14 characters required");
       if (!/[A-Z]/.test(p)) errors.push("At least one uppercase letter");
@@ -130,13 +130,14 @@ const Signup = {
       return errors;
     }
   },
-
+//kontrollib vormi saatmisel kas parool sobib
   methods: {
     submit() {
       this.tried = true;
       this.success = this.errors.length === 0;
     }
   },
+   //kuvab regristreerimisvormi ja veateated
 
   template: `
     <main class="page-shell centered-page">
@@ -168,7 +169,7 @@ const Signup = {
 };
 
 // Vue Router ühendab kaks vaadet
-const router = VueRouter.createRouter({
+const router = VueRouter.createRouter({ //vue router võimaldab liikuda kahe lehe vahel
   history: VueRouter.createWebHashHistory(),
   routes: [
     { path: "/", component: Home },
@@ -177,9 +178,9 @@ const router = VueRouter.createRouter({
 });
 
 // Käivitame rakenduse
-const app = Vue.createApp({});
-app.component("app-header", Header);
+const app = Vue.createApp({}); //loob ja käivitab vue rakenduse
+app.component("app-header", Header); //lisab headeri ja footeri
 app.component("app-footer", Footer);
-app.use(store);
+app.use(store); //ühendab vuex store ja vue routeri
 app.use(router);
-app.mount("#app");
+app.mount("#app"); //kuvab rakenduse htmlis elemendi #app sees
