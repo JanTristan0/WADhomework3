@@ -96,7 +96,7 @@ const Home = { //avaleht kus kuvatakse kõik postitused
   },
   mounted() {
     this.$store.dispatch("load"); //lehe avamisel laeb postitused
-  }, // all kuvab postitused ja reset nupu (ei saanud //-iga all commentiks panna)
+  }, // all kuvab postitused ja reset nupu (ei saanud //-iga all commentiks panna miskipärast)
   template: `
     <main class="page-shell">
       <section class="feed-layout">
