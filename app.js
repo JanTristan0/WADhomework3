@@ -97,7 +97,7 @@ const Home = { //avaleht kus kuvatakse kõik postitused
   mounted() {
     this.$store.dispatch("load"); //lehe avamisel laeb postitused
   }, // all kuvab postitused ja reset nupu (ei saanud //-iga all commentiks panna)
-  template: ` 
+  template: `
     <main class="page-shell">
       <section class="feed-layout">
         <aside class="side-panel"><p>PostIt</p></aside>
