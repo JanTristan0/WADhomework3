@@ -160,7 +160,7 @@ const Signup = {
             <button class="primary-button" type="submit">Signup</button>
           </section>
           <p v-if="success" class="signup-success">
-            Password is valid! (Demo only)
+            Password is valid!
           </p>
         </form>
       </section>
